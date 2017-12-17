@@ -1,18 +1,20 @@
-class Create
+class Hash
   include Futils
   include Write
   def initialize(id)
     @id = id
     @hash = {}
+    @hashLocation = "hash/db/_#{@id}.rb"
+    build
   end
   def build
-    hashLocation = "hash/db/_#{@id}.rb"
-    touchFile(hashLocation)
+    touchFile(@hashLocation)
     @hash["hashID"] = @id
-    @hash["hashLocation"] = hashLocation
+    @hash["hashLocation"] = @hashLocation
     query = Query.new(@hash)
     query.write
     updateIndex
+    load 'hash/db/index.rb'
   end
   def updateIndex
     indexLocation = 'hash/db/index.rb'
