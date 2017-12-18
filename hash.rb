@@ -17,6 +17,6 @@ load 'hash/class/Hash.rb'
 # query = Query.new($test-entry)
 
 # To update query:
-# query.update("cum", "blumpkins")
+# query.update("key", "value")
 # Or remove it:
 # query.destroy
